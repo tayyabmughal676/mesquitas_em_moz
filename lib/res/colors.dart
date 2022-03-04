@@ -21,7 +21,11 @@ class AppColors {
   static const xWhiteColor = Color.fromRGBO(249, 249, 249, 1);
   static const xFontText = Color.fromRGBO(25, 53, 102, 1);
   static const xFont2Text = Color.fromRGBO(0, 113, 104, 1);
+  static const xFon3Text = Color.fromRGBO(211, 211, 211, 1);
   static const xSubheadingTextColor = Color.fromRGBO(0, 0, 0, 1);
+  static const xContainerShadow = Color.fromRGBO(0, 0, 0, 0.06);
+
+
 
 
 

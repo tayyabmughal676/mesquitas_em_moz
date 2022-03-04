@@ -93,6 +93,14 @@ dev_dependencies:
   flutter_native_splash: ^2.0.5
   flutter_launcher_icons: ^0.9.2
 
+flutter_native_splash:
+  android: true
+  ios: true
+
+  color: "#FFCC00"
+#  background_image: "assets/png/background_splash.png"
+#  background_image_dark: "assets/png/background_splash.png"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

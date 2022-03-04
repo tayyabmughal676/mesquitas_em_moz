@@ -1,6 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mesquitas_em_moz/animations/slide_right.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/main_home_screen.dart';
+import 'package:mesquitas_em_moz/screens/project_widgets/project_widgets.dart';
 import 'package:provider/provider.dart';
 import '../../res/assets.dart';
 import '../../res/colors.dart';
@@ -43,9 +45,9 @@ class _GetStartedScreenState extends State<GetStartedScreen>
               height: sizes!.height,
               width: sizes!.width,
               decoration: const BoxDecoration(
-                  color: AppColors.xBackgroundColor,
+                  // color: AppColors.xBackgroundColor,
                   image: DecorationImage(
-                      image: AssetImage("assets/png/background.png"),
+                      image: AssetImage("assets/png/main_bg_image.png"),
                       fit: BoxFit.cover)),
               child: Column(
                 children: [
@@ -86,22 +88,10 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: sizes!.widthRatio * 25),
-                    child: Container(
-                      height: sizes!.heightRatio * 48,
-                      width: sizes!.widthRatio * 325,
-                      decoration: BoxDecoration(
-                        color: AppColors.xFont2Text,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Center(
-                        child: TextButton(
-                          onPressed: () {},
-                          child: TextView.getTextWith20(
-                              "Iniciar", Assets.poppinsMedium,
-                              color: AppColors.whiteTextColor, lines: 1),
-                        ),
-                      ),
-                    ),
+                    child: ProjectWidget.startedButton(onPress: () {
+                      Navigator.pushReplacement(context,
+                          SlideRightRoute(page: const MainHomeScreen()));
+                    }),
                   ),
                   CommonPadding.sizeBoxWithHeight(height: 28),
                 ],
