@@ -4,6 +4,7 @@ import 'package:mesquitas_em_moz/animations/slide_right.dart';
 import 'package:mesquitas_em_moz/res/assets.dart';
 import 'package:mesquitas_em_moz/res/common_padding.dart';
 import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/dua_after_salah_screens/dua_after_salah_screen.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/rabbana_duas_screens/rabbana_dua_screen.dart';
 import 'package:mesquitas_em_moz/screens/project_widgets/project_widgets.dart';
 import 'package:mesquitas_em_moz/widgets/text_views.dart';
 
@@ -78,7 +79,13 @@ class _DuasScreenState extends State<DuasScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     _getDuasContainer(title: duaList[3], icon: duaIconList[3]),
-                    _getDuasContainer(title: duaList[4], icon: duaIconList[4]),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              SlideRightRoute(page: const RabbanaDuaScreen()));
+                        },
+                        child: _getDuasContainer(
+                            title: duaList[4], icon: duaIconList[4])),
                     SizedBox(
                       width: sizes!.widthRatio * 88,
                       height: sizes!.heightRatio * 122,

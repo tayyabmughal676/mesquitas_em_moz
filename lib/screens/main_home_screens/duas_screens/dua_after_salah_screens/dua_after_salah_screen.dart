@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mesquitas_em_moz/res/assets.dart';
-import 'package:mesquitas_em_moz/res/common_padding.dart';
 import 'package:mesquitas_em_moz/res/extensions.dart';
-import 'package:mesquitas_em_moz/widgets/text_views.dart';
 
+import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
+import '../../../../res/common_padding.dart';
 import '../../../../res/res.dart';
+import '../../../../widgets/text_views.dart';
 import '../../../project_widgets/project_widgets.dart';
 
 class DuaAfterSalahScreen extends StatefulWidget {

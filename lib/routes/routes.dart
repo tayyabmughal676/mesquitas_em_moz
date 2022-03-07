@@ -1,3 +1,5 @@
+import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/rabbana_duas_screens/rabbana_dua_screen.dart';
+
 import '../screens/get_started_screens/get_started_screen.dart';
 import '../screens/main_home_screens/duas_screens/dua_after_salah_screens/dua_after_salah_screen.dart';
 import '../screens/main_home_screens/duas_screens/duas_screen.dart';
@@ -18,6 +20,7 @@ class Routes {
   static const String duaAfterSalahScreen = '/duaAfterSalahScreen';
   static const String provinceScreen = '/provinceScreen';
   static const String masjidDetailScreen = '/masjidDetailScreen';
+  static const String rabbanaDuaScreen = '/rabbanaDuaScreen';
 
   static final routes = {
     splash: (context) => const GetStartedScreen(),
@@ -29,5 +32,6 @@ class Routes {
     provinceScreen: (context) => const ProvinceScreen(),
     masjidDetailScreen: (context) => const MasjidDetailScreen(),
     duaAfterSalahScreen: (context) => const DuaAfterSalahScreen(),
+    rabbanaDuaScreen: (context) => const RabbanaDuaScreen(),
   };
 }
