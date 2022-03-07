@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mesquitas_em_moz/animations/slide_right.dart';
 import 'package:mesquitas_em_moz/res/extensions.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/dua_after_salah_screens/dua_after_salah_screen.dart';
 
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
@@ -27,21 +29,31 @@ class _RabbanaDuaScreenState extends State<RabbanaDuaScreen> {
           height: sizes!.height,
           width: sizes!.width,
           decoration: const BoxDecoration(
-              // color: AppColors.xFont2Text,
               image: DecorationImage(
                   image: AssetImage("assets/png/main_bg_image.png"),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
               CommonPadding.sizeBoxWithHeight(height: 30),
-              Expanded(child: ListView.builder(itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.only(
-                      top: sizes!.heightRatio * 5,
-                      bottom: sizes!.heightRatio * 5),
-                  child: getDuaRowContainer().get25HorizontalPadding(),
-                );
-              }))
+              Expanded(
+                  child: ListView.builder(
+                      itemCount: 15,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                              top: sizes!.heightRatio * 5,
+                              bottom: sizes!.heightRatio * 5),
+                          child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    SlideRightRoute(
+                                        page: const DuaAfterSalahScreen()));
+                              },
+                              child: getDuaRowContainer()
+                                  .get25HorizontalPadding()),
+                        );
+                      }))
             ],
           ),
         ),
