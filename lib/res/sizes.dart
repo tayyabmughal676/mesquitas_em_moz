@@ -16,6 +16,7 @@ class AppSizes {
   late double extraSmallFontSize;
   late double smallFontSize;
   late double smallFontSize12;
+  late double smallFontSize8;
   late double smallFontSize11;
   late double mediumFontSize;
   late double mediumLargeFontSize;
@@ -68,6 +69,7 @@ class AppSizes {
     extraSmallFontSize = 10.0 * fontRatio;
     smallFontSize = 13.0 * fontRatio;
     smallFontSize12 = 12.0 * fontRatio;
+    smallFontSize8 = 8.0 * fontRatio;
     smallFontSize11 = 11.0 * fontRatio;
     regularFontSize = 14.0 * fontRatio;
     mediumFontSize = 15.0 * fontRatio;

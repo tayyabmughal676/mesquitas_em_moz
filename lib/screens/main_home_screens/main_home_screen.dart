@@ -10,6 +10,7 @@ import 'duas_screens/duas_screen.dart';
 import 'main_home_provider.dart';
 import 'masjids_screens/masjids_screen.dart';
 import 'prayer_screens/prayer_screen.dart';
+import 'province_screens/province_screen.dart';
 import 'quibla_screens/quibla_screen.dart';
 
 class MainHomeScreen extends StatefulWidget {
@@ -33,6 +34,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   }
 
   static const List<Widget> _widgetOptions = [
+    ProvinceScreen(),
     PrayerScreen(),
     MasjidsScreen(),
     QuiblaScreen(),
@@ -46,21 +48,24 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
         child: Scaffold(
       bottomNavigationBar: CircleNavBar(
         activeIcons: [
+          returnSelectedIcon(icon: "assets/svg/province_icon.svg"),
           returnSelectedIcon(icon: "assets/svg/prayer_icon.svg"),
           returnSelectedIcon(icon: "assets/svg/masjids_icon.svg"),
-          returnSelectedIcon(icon: "assets/svg/quibla_icon.svg"),
+          returnSelectedIcon(icon: "assets/svg/quibla_bottom_icon.svg"),
           returnSelectedIcon(icon: "assets/svg/duas_icon.svg"),
         ],
         inactiveIcons: [
+          returnBottomIconProvince(
+              icon: "assets/svg/province_icon.svg", text: "Provincia"),
           returnBottomIcon(icon: "assets/svg/prayer_icon.svg", text: "Prayer"),
           returnBottomIcon(
               icon: "assets/svg/masjids_icon.svg", text: "Masjids"),
-          returnBottomIcon(icon: "assets/svg/quibla_icon.svg", text: "Quibla"),
+          returnBottomIcon(icon: "assets/svg/quibla_bottom_icon.svg", text: "Quibla"),
           returnBottomIcon(icon: "assets/svg/duas_icon.svg", text: "Duas"),
         ],
 
         color: AppColors.xFont2Text,
-        height: 74,
+        height: 78,
         circleWidth: 64,
         initIndex: _currentIndex,
         onChanged: (v) {
@@ -101,6 +106,28 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           SvgPicture.asset(
             icon,
             color: AppColors.xFon3Text,
+          ),
+          CommonPadding.sizeBoxWithHeight(height: 2),
+          Text(
+            text,
+            style: const TextStyle(color: AppColors.xFon3Text),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget returnBottomIconProvince(
+      {required String icon, required String text}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: sizes!.heightRatio * 10),
+      child: Column(
+        children: [
+          SvgPicture.asset(
+            icon,
+            color: AppColors.xFon3Text,
+            height: sizes!.heightRatio * 24,
+            width: sizes!.widthRatio * 24,
           ),
           CommonPadding.sizeBoxWithHeight(height: 2),
           Text(

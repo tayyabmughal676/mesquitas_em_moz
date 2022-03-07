@@ -486,6 +486,24 @@ class TextView {
     );
   }
 
+  static Text getText8(final text, final fontFamily,
+      {@required final color,
+      final TextAlign textAlign = TextAlign.start,
+      @required final lines}) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      softWrap: true,
+      maxLines: lines,
+      style: TextStyle(
+        fontSize: sizes!.smallFontSize12,
+        fontWeight: FontWeight.w400,
+        fontFamily: fontFamily,
+        color: color,
+      ),
+    );
+  }
+
   static Text getSmallBoldText12(final text, final fontFamily,
       {@required final color,
       final TextAlign textAlign = TextAlign.start,

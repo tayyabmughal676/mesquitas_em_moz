@@ -26,7 +26,9 @@ class _QuiblaScreenState extends State<QuiblaScreen> {
                   image: AssetImage("assets/png/main_bg_image.png"),
                   fit: BoxFit.cover)),
           child: Column(
-            children: const [],
+            children:  [
+
+            ],
           ),
         ),
       ),

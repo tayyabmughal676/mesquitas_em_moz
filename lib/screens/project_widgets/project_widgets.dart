@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../res/assets.dart';
 import '../../res/colors.dart';
@@ -28,11 +29,52 @@ class ProjectWidget {
     );
   }
 
-  static AppBar getAppBar({required String title}) => AppBar(
+  static AppBar getAppBar({required String title, @required String? icon}) =>
+      AppBar(
+        automaticallyImplyLeading: false,
         title: Center(
-          child: TextView.getMediumText18(title, Assets.poppinsMedium,
-              color: AppColors.whiteTextColor, lines: 1),
+          child: Padding(
+            padding: EdgeInsets.only(left: sizes!.widthRatio * 25.44),
+            child: TextView.getMediumText18(title, Assets.poppinsMedium,
+                color: AppColors.whiteTextColor,
+                lines: 1,
+                textAlign: TextAlign.center),
+          ),
         ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: sizes!.widthRatio * 25.44),
+            child: SvgPicture.asset(icon ?? ''),
+          )
+        ],
+        backgroundColor: AppColors.xFont2Text,
+        elevation: 0.5,
+      );
+
+  static AppBar getAppBarWithBackButton(
+          {required String title, @required String? icon}) =>
+      AppBar(
+        automaticallyImplyLeading: true,
+        // leading: SvgPicture.asset(
+        //     'assets/svg/back_icon.svg',
+        //   width: sizes!.widthRatio * 6.01,
+        //   height: sizes!.heightRatio * 12.02,
+        // ),
+        title: Center(
+          child: Padding(
+            padding: EdgeInsets.only(left: sizes!.widthRatio * 25.44),
+            child: TextView.getMediumText18(title, Assets.poppinsMedium,
+                color: AppColors.whiteTextColor,
+                lines: 1,
+                textAlign: TextAlign.center),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: sizes!.widthRatio * 25.44),
+            child: SvgPicture.asset(icon ?? ''),
+          )
+        ],
         backgroundColor: AppColors.xFont2Text,
         elevation: 0.5,
       );

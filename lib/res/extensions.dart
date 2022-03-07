@@ -23,6 +23,13 @@ extension AlignExtension on Widget {
     );
   }
 
+  Widget get25HorizontalPadding() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: sizes!.widthRatio * 25.0),
+      child: this,
+    );
+  }
+
   Widget get20HorizontalPadding() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: sizes!.widthRatio * 20.0),
