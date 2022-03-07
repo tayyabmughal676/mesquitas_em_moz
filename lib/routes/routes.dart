@@ -1,4 +1,5 @@
 import '../screens/get_started_screens/get_started_screen.dart';
+import '../screens/main_home_screens/duas_screens/dua_after_salah_screens/dua_after_salah_screen.dart';
 import '../screens/main_home_screens/duas_screens/duas_screen.dart';
 import '../screens/main_home_screens/main_home_screen.dart';
 import '../screens/main_home_screens/masjids_screens/masjid_detail_screens/masjid_detail_screen.dart';
@@ -14,6 +15,7 @@ class Routes {
   static const String masjidsScreen = '/masjidsScreen';
   static const String prayerScreen = '/prayerScreen';
   static const String duasScreen = '/duasScreen';
+  static const String duaAfterSalahScreen = '/duaAfterSalahScreen';
   static const String provinceScreen = '/provinceScreen';
   static const String masjidDetailScreen = '/masjidDetailScreen';
 
@@ -26,5 +28,6 @@ class Routes {
     prayerScreen: (context) => const PrayerScreen(),
     provinceScreen: (context) => const ProvinceScreen(),
     masjidDetailScreen: (context) => const MasjidDetailScreen(),
+    duaAfterSalahScreen: (context) => const DuaAfterSalahScreen(),
   };
 }

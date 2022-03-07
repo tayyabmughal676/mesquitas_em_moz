@@ -52,22 +52,25 @@ class ProjectWidget {
       );
 
   static AppBar getAppBarWithBackButton(
-          {required String title, @required String? icon}) =>
+          {required String title,
+          @required String? icon,
+          required BuildContext context}) =>
       AppBar(
-        automaticallyImplyLeading: true,
-        // leading: SvgPicture.asset(
-        //     'assets/svg/back_icon.svg',
-        //   width: sizes!.widthRatio * 6.01,
-        //   height: sizes!.heightRatio * 12.02,
-        // ),
-        title: Center(
-          child: Padding(
-            padding: EdgeInsets.only(left: sizes!.widthRatio * 25.44),
-            child: TextView.getMediumText18(title, Assets.poppinsMedium,
-                color: AppColors.whiteTextColor,
-                lines: 1,
-                textAlign: TextAlign.center),
+        // automaticallyImplyLeading: true,
+        leading: Padding(
+          padding: EdgeInsets.only(left: sizes!.widthRatio * 10),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
+        ),
+        title: Center(
+          child: TextView.getMediumText18(title, Assets.poppinsMedium,
+              color: AppColors.whiteTextColor,
+              lines: 1,
+              textAlign: TextAlign.center),
         ),
         actions: [
           Padding(

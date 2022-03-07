@@ -96,68 +96,7 @@ class _PrayerScreenState extends State<PrayerScreen> {
                             color: AppColors.xFont2Text, lines: 1))
                     .get25HorizontalPadding(),
                 CommonPadding.sizeBoxWithHeight(height: 15),
-                Container(
-                  height: sizes!.heightRatio * 349,
-                  width: sizes!.widthRatio * 325,
-                  decoration: BoxDecoration(
-                    color: AppColors.whiteTextColor,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: AppColors.xContainerShadow2,
-                        blurRadius: 35, //18
-                        offset: Offset(0, 15),
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: sizes!.heightRatio * 30,
-                        bottom: sizes!.heightRatio * 22,
-                        left: sizes!.widthRatio * 12.5,
-                        right: sizes!.widthRatio * 12.5),
-                    child: Column(
-                      children: [
-                        getNamazRow(text: "Fajr"),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        const Divider(
-                          color: AppColors.xFon3Text,
-                          thickness: 0.5,
-                        ),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        getNamazRow(text: "Nascer Do Sol"),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        const Divider(
-                          color: AppColors.xFon3Text,
-                          thickness: 0.5,
-                        ),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        getNamazRow(text: "Zuhr"),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        const Divider(
-                          color: AppColors.xFon3Text,
-                          thickness: 0.5,
-                        ),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        getNamazRow(text: "Asr"),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        const Divider(
-                          color: AppColors.xFon3Text,
-                          thickness: 0.5,
-                        ),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        getNamazRow(text: "Maghrib"),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        const Divider(
-                          color: AppColors.xFon3Text,
-                          thickness: 0.5,
-                        ),
-                        CommonPadding.sizeBoxWithHeight(height: 10),
-                        getNamazRow(text: "Isha"),
-                      ],
-                    ),
-                  ),
-                ),
+               _namazTimingContainer(),
                 CommonPadding.sizeBoxWithHeight(height: 30),
               ],
             ),
@@ -166,6 +105,70 @@ class _PrayerScreenState extends State<PrayerScreen> {
       ),
     );
   }
+
+
+  Widget _namazTimingContainer() =>  Container(
+    height: sizes!.heightRatio * 349,
+    width: sizes!.widthRatio * 325,
+    decoration: BoxDecoration(
+      color: AppColors.whiteTextColor,
+      borderRadius: BorderRadius.circular(12),
+      boxShadow: const [
+        BoxShadow(
+          color: AppColors.xContainerShadow2,
+          blurRadius: 35, //18
+          offset: Offset(0, 15),
+        ),
+      ],
+    ),
+    child: Padding(
+      padding: EdgeInsets.only(
+          top: sizes!.heightRatio * 30,
+          bottom: sizes!.heightRatio * 22,
+          left: sizes!.widthRatio * 12.5,
+          right: sizes!.widthRatio * 12.5),
+      child: Column(
+        children: [
+          getNamazRow(text: "Fajr"),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          const Divider(
+            color: AppColors.xFon3Text,
+            thickness: 0.5,
+          ),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          getNamazRow(text: "Nascer Do Sol"),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          const Divider(
+            color: AppColors.xFon3Text,
+            thickness: 0.5,
+          ),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          getNamazRow(text: "Zuhr"),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          const Divider(
+            color: AppColors.xFon3Text,
+            thickness: 0.5,
+          ),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          getNamazRow(text: "Asr"),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          const Divider(
+            color: AppColors.xFon3Text,
+            thickness: 0.5,
+          ),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          getNamazRow(text: "Maghrib"),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          const Divider(
+            color: AppColors.xFon3Text,
+            thickness: 0.5,
+          ),
+          CommonPadding.sizeBoxWithHeight(height: 10),
+          getNamazRow(text: "Isha"),
+        ],
+      ),
+    ),
+  );
 
   Widget getNamazRow({required String text}) => Padding(
         padding: EdgeInsets.symmetric(horizontal: sizes!.widthRatio * 20),

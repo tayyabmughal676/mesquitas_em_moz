@@ -151,7 +151,7 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
         ),
         child: Padding(
           padding: EdgeInsets.only(
-              left: sizes!.widthRatio * 18, right: sizes!.widthRatio * 18),
+              left: sizes!.widthRatio * 0, right: sizes!.widthRatio * 18),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

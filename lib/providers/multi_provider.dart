@@ -1,3 +1,4 @@
+import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/dua_after_salah_screens/dua_after_salah_provider.dart';
 import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/duas_provider.dart';
 import 'package:mesquitas_em_moz/screens/main_home_screens/main_home_provider.dart';
 import 'package:mesquitas_em_moz/screens/main_home_screens/masjids_screens/masjid_detail_screens/masjid_detail_provider.dart';
@@ -40,6 +41,10 @@ final multiProviders = [
   ),
   ChangeNotifierProvider<MasjidDetailProvider>(
     create: (_) => MasjidDetailProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<DuaAfterSalahProvider>(
+    create: (_) => DuaAfterSalahProvider(),
     lazy: true,
   ),
 ];
