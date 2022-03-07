@@ -49,6 +49,7 @@ dependencies:
   animations: ^2.0.2
   #   Connectivity Check
   connectivity: ^3.0.6
+  connectivity_plus: ^2.2.1
   #  Toast
   fluttertoast: ^8.0.9
   #  Shared Preferences
