@@ -99,7 +99,7 @@ flutter_native_splash:
   android: true
   ios: true
 
-  color: "#FFCC00"
+  color: "#FFFFFF"
 #  background_image: "assets/png/background_splash.png"
 #  background_image_dark: "assets/png/background_splash.png"
 
