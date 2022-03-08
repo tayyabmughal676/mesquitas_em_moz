@@ -81,6 +81,9 @@ dependencies:
   flutter_svg_provider: ^1.0.3
   #  Carousel Slider
   carousel_slider: ^4.0.0
+  flutter_compass: ^0.7.0
+  permission_handler: ^9.2.0
+
 
 dev_dependencies:
   flutter_test:
@@ -99,9 +102,9 @@ flutter_native_splash:
   android: true
   ios: true
 
-  color: "#FFFFFF"
-#  background_image: "assets/png/background_splash.png"
-#  background_image_dark: "assets/png/background_splash.png"
+#  color: "#FFFFFF"
+  background_image: "assets/png/background_splash.png"
+  background_image_dark: "assets/png/background_splash.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
