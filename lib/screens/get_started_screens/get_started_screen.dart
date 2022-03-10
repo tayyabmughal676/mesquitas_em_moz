@@ -67,7 +67,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                           color: AppColors.xFont2Text,
                           lines: 2,
                           textAlign: TextAlign.center)),
-                  CommonPadding.sizeBoxWithHeight(height: 22),
+                  CommonPadding.sizeBoxWithHeight(height: 18),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: sizes!.widthRatio * 25),
@@ -78,7 +78,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                         lines: 2,
                         textAlign: TextAlign.center),
                   ),
-                  CommonPadding.sizeBoxWithHeight(height: 48),
+                  CommonPadding.sizeBoxWithHeight(height: 30),
                   Center(
                     child: SvgPicture.asset(
                       "assets/svg/Img_welcome.svg",

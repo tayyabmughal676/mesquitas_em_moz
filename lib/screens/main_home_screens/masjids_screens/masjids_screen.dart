@@ -78,6 +78,7 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             image: const DecorationImage(
+                alignment: Alignment.bottomCenter,
                 image: AssetImage('assets/png/masjid_icon@2x.png')),
             gradient: const LinearGradient(
               begin: Alignment.topCenter,
