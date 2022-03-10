@@ -89,7 +89,7 @@ class _RabbanaDuaScreenState extends State<RabbanaDuaScreen> {
                   lines: 1,
                   fontWeight: FontWeight.normal,
                   textAlign: TextAlign.center),
-              SvgPicture.asset("assets/svg/forward_icon.svg"),
+              SvgPicture.asset("assets/svg/dua_forward_icon.svg"),
             ],
           ),
         ),
