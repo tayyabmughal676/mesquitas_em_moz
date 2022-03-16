@@ -82,7 +82,6 @@ class _RabbanaDuaScreenState extends State<RabbanaDuaScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SvgPicture.asset('assets/svg/number_icon.svg'),
-
               TextView.getSubHeadingTextWith15(
                   "Rabbanaa taqabbal minnaa innaka…", Assets.poppinsMedium,
                   color: AppColors.xFont2Text,
