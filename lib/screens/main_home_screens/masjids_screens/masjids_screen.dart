@@ -6,8 +6,11 @@ import 'package:mesquitas_em_moz/res/assets.dart';
 import 'package:mesquitas_em_moz/res/common_padding.dart';
 import 'package:mesquitas_em_moz/res/extensions.dart';
 import 'package:mesquitas_em_moz/screens/main_home_screens/masjids_screens/masjid_detail_screens/masjid_detail_screen.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/masjids_screens/masjids_provider.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/province_screens/province_provider.dart';
 import 'package:mesquitas_em_moz/screens/project_widgets/project_widgets.dart';
 import 'package:mesquitas_em_moz/widgets/text_views.dart';
+import 'package:provider/provider.dart';
 
 import '../../../res/colors.dart';
 import '../../../res/res.dart';
@@ -20,8 +23,23 @@ class MasjidsScreen extends StatefulWidget {
 }
 
 class _MasjidsScreenState extends State<MasjidsScreen> {
+  late MasjidsProvider masjidsProvider;
+
+  @override
+  void initState() {
+    masjidsProvider = MasjidsProvider();
+    masjidsProvider = Provider.of<MasjidsProvider>(context, listen: false);
+    masjidsProvider.init(context: context);
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      masjidsProvider.getMasjidList(context: context);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    Provider.of<MasjidsProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
         appBar:
@@ -40,24 +58,40 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
               getHeaderContainer(),
               CommonPadding.sizeBoxWithHeight(height: 12),
 
-              Expanded(
-                  child: ListView.builder(
-                      itemCount: 15,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: sizes!.heightRatio * 10),
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    SlideRightRoute(
-                                        page: const MasjidDetailScreen()));
-                              },
-                              child:
-                                  getRowContainer().get25HorizontalPadding()),
-                        );
-                      })),
+              masjidsProvider.isDataLoaded == true
+                  ? Expanded(
+                      child: ListView.builder(
+                          itemCount:
+                              masjidsProvider.getMasjidsResponse.data!.length,
+                          itemBuilder: (context, index) {
+                            var name = masjidsProvider
+                                .getMasjidsResponse.data![index].name
+                                .toString();
+
+                            var id = masjidsProvider
+                                .getMasjidsResponse.data![index].mosqueId;
+
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: sizes!.heightRatio * 10),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        SlideRightRoute(
+                                            page: MasjidDetailScreen(
+                                          id: id,
+                                        )));
+                                  },
+                                  child: getRowContainer(name: name)
+                                      .get25HorizontalPadding()),
+                            );
+                          }))
+                  : Center(
+                      child: TextView.getRegularS17W600Text(
+                          "No Data Found", Assets.poppinsMedium,
+                          color: AppColors.psGetStartedButtonColor, lines: 1),
+                    ),
 
               // getRowContainer().get25HorizontalPadding(),
             ],
@@ -136,7 +170,7 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
         ),
       );
 
-  Widget getRowContainer() => Container(
+  Widget getRowContainer({required String name}) => Container(
         height: sizes!.heightRatio * 74,
         width: sizes!.widthRatio * 325,
         decoration: BoxDecoration(
@@ -165,8 +199,7 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
                     width: sizes!.widthRatio * 76,
                   ),
                   CommonPadding.sizeBoxWithWidth(width: 7),
-                  TextView.getSubHeadingTextWith15(
-                      "Provincia de Sofala", Assets.poppinsRegular,
+                  TextView.getSubHeadingTextWith15(name, Assets.poppinsRegular,
                       color: AppColors.xSubheadingTextColor,
                       lines: 1,
                       fontWeight: FontWeight.normal),
