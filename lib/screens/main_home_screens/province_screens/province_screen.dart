@@ -33,6 +33,7 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<ProvinceProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
         appBar: ProjectWidget.getAppBar(
@@ -46,22 +47,32 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
                   fit: BoxFit.cover)),
           child: Column(
             children: [
-              Expanded(
-                  child: Padding(
-                padding: EdgeInsets.only(
-                    left: sizes!.widthRatio * 25,
-                    right: sizes!.widthRatio * 25,
-                    top: sizes!.heightRatio * 25),
-                child: ListView.builder(
-                    itemCount: 24,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: sizes!.heightRatio * 5),
-                        child: getProvinceContainer(),
-                      );
-                    }),
-              )),
+              provinceProvider.isDataLoaded == true
+                  ? Expanded(
+                      child: Padding(
+                      padding: EdgeInsets.only(
+                          left: sizes!.widthRatio * 25,
+                          right: sizes!.widthRatio * 25,
+                          top: sizes!.heightRatio * 25),
+                      child: ListView.builder(
+                          itemCount:
+                              provinceProvider.getProvinceResponse.data!.length,
+                          itemBuilder: (context, index) {
+                            var name = provinceProvider
+                                .getProvinceResponse.data![index].name
+                                .toString();
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: sizes!.heightRatio * 5),
+                              child: getProvinceContainer(name: name),
+                            );
+                          }),
+                    ))
+                  : Center(
+                      child: TextView.getRegularS17W600Text(
+                          "No Data Found", Assets.poppinsMedium,
+                          color: AppColors.psGetStartedButtonColor, lines: 1),
+                    ),
             ],
           ),
         ),
@@ -69,7 +80,7 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
     );
   }
 
-  Widget getProvinceContainer() => Container(
+  Widget getProvinceContainer({required String name}) => Container(
         height: sizes!.heightRatio * 71,
         width: sizes!.widthRatio * 325,
         decoration: BoxDecoration(
@@ -89,8 +100,7 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextView.getSubHeadingTextWith15(
-                  "Provincia de Sofala", Assets.poppinsMedium,
+              TextView.getSubHeadingTextWith15(name, Assets.poppinsMedium,
                   color: AppColors.xSubheadingTextColor,
                   lines: 1,
                   fontWeight: FontWeight.normal),
