@@ -4,25 +4,29 @@
 
 class GetMasjidDetailResponse {
   GetMasjidDetailResponse({
-      String? message, 
-      int? code, 
-      Data? data,}){
+    String? message,
+    int? code,
+    Data? data,
+  }) {
     _message = message;
     _code = code;
     _data = data;
-}
+  }
 
   GetMasjidDetailResponse.fromJson(dynamic json) {
     _message = json['message'];
     _code = json['code'];
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
+
   String? _message;
   int? _code;
   Data? _data;
 
   String? get message => _message;
+
   int? get code => _code;
+
   Data? get data => _data;
 
   Map<String, dynamic> toJson() {
@@ -34,7 +38,6 @@ class GetMasjidDetailResponse {
     }
     return map;
   }
-
 }
 
 /// mosqueId : 3
@@ -50,16 +53,17 @@ class GetMasjidDetailResponse {
 
 class Data {
   Data({
-      int? mosqueId, 
-      String? name, 
-      String? filePath, 
-      String? fajr, 
-      String? nascerDoSol, 
-      String? zuhr, 
-      String? asr, 
-      String? maghrib, 
-      String? isha, 
-      List<Events>? events,}){
+    int? mosqueId,
+    String? name,
+    String? filePath,
+    String? fajr,
+    String? nascerDoSol,
+    String? zuhr,
+    String? asr,
+    String? maghrib,
+    String? isha,
+    List<Events>? events,
+  }) {
     _mosqueId = mosqueId;
     _name = name;
     _filePath = filePath;
@@ -70,7 +74,7 @@ class Data {
     _maghrib = maghrib;
     _isha = isha;
     _events = events;
-}
+  }
 
   Data.fromJson(dynamic json) {
     _mosqueId = json['mosqueId'];
@@ -89,6 +93,7 @@ class Data {
       });
     }
   }
+
   int? _mosqueId;
   String? _name;
   String? _filePath;
@@ -101,14 +106,23 @@ class Data {
   List<Events>? _events;
 
   int? get mosqueId => _mosqueId;
+
   String? get name => _name;
+
   String? get filePath => _filePath;
+
   String? get fajr => _fajr;
+
   String? get nascerDoSol => _nascerDoSol;
+
   String? get zuhr => _zuhr;
+
   String? get asr => _asr;
+
   String? get maghrib => _maghrib;
+
   String? get isha => _isha;
+
   List<Events>? get events => _events;
 
   Map<String, dynamic> toJson() {
@@ -127,7 +141,6 @@ class Data {
     }
     return map;
   }
-
 }
 
 /// eventId : 4
@@ -136,25 +149,29 @@ class Data {
 
 class Events {
   Events({
-      int? eventId, 
-      String? name, 
-      String? filePath,}){
+    int? eventId,
+    String? name,
+    String? filePath,
+  }) {
     _eventId = eventId;
     _name = name;
     _filePath = filePath;
-}
+  }
 
   Events.fromJson(dynamic json) {
     _eventId = json['eventId'];
     _name = json['name'];
     _filePath = json['filePath'];
   }
+
   int? _eventId;
   String? _name;
   String? _filePath;
 
   int? get eventId => _eventId;
+
   String? get name => _name;
+
   String? get filePath => _filePath;
 
   Map<String, dynamic> toJson() {
@@ -164,5 +181,4 @@ class Events {
     map['filePath'] = _filePath;
     return map;
   }
-
 }
