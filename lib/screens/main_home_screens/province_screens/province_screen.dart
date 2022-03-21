@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mesquitas_em_moz/res/assets.dart';
 import 'package:mesquitas_em_moz/res/colors.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/province_screens/province_provider.dart';
 import 'package:mesquitas_em_moz/widgets/text_views.dart';
+import 'package:provider/provider.dart';
 
 import '../../../res/res.dart';
 import '../../project_widgets/project_widgets.dart';
@@ -15,6 +17,20 @@ class ProvinceScreen extends StatefulWidget {
 }
 
 class _ProvinceScreenState extends State<ProvinceScreen> {
+  ProvinceProvider provinceProvider = ProvinceProvider();
+
+  @override
+  void initState() {
+    provinceProvider = ProvinceProvider();
+    provinceProvider = Provider.of<ProvinceProvider>(context, listen: false);
+    provinceProvider.init(context: context);
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      provinceProvider.getProvinceList(context: context);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

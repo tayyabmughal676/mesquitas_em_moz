@@ -5,10 +5,10 @@ import '../res/res.dart';
 
 class Loader {
   showLoader({
-    BuildContext? context,
+    required BuildContext context,
   }) {
     showDialog(
-      context: context!,
+      context: context,
       builder: (_) {
         return Material(
           color: Colors.black.withOpacity(0.5),
@@ -24,7 +24,7 @@ class Loader {
     );
   }
 
-  hideLoader(BuildContext context) {
+  hideLoader({required BuildContext context}) {
     Navigator.of(context).pop();
   }
 }

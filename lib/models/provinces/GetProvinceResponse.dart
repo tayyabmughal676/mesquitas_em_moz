@@ -1,9 +1,9 @@
 /// message : "Operation performed successfully"
 /// code : 1
-/// data : [{"caseManagerId":1,"name":"Rick Fulton","email":"rick@pacificshoresrecovery.com"},{"caseManagerId":2,"name":"Jerry Larabell","email":"jerry@pacificshoresrecovery.com"},{"caseManagerId":3,"name":"Adriana Alvarez","email":"adriana@pacificshoresrecovery.com"},{"caseManagerId":4,"name":"Carmine Cunneen","email":"carmine@pacificshoresrecovery.com"},{"caseManagerId":5,"name":"Corey Bierman","email":"corey@pacificshoresrecovery.com"}]
+/// data : [{"provinceId":1,"name":"Cabo Delgado"},{"provinceId":2,"name":"Gaza"},{"provinceId":3,"name":"Inhambane"},{"provinceId":4,"name":"Manica"},{"provinceId":5,"name":"Maputo City"},{"provinceId":6,"name":"Maputo"},{"provinceId":7,"name":"Nampula"},{"provinceId":8,"name":"Niassa"},{"provinceId":9,"name":"Sofala"},{"provinceId":10,"name":"Tete"},{"provinceId":11,"name":"Zambezia"}]
 
-class GetCaseManagerResponse {
-  GetCaseManagerResponse({
+class GetProvinceResponse {
+  GetProvinceResponse({
       String? message, 
       int? code, 
       List<Data>? data,}){
@@ -12,7 +12,7 @@ class GetCaseManagerResponse {
     _data = data;
 }
 
-  GetCaseManagerResponse.fromJson(dynamic json) {
+  GetProvinceResponse.fromJson(dynamic json) {
     _message = json['message'];
     _code = json['code'];
     if (json['data'] != null) {
@@ -42,38 +42,31 @@ class GetCaseManagerResponse {
 
 }
 
-/// caseManagerId : 1
-/// name : "Rick Fulton"
-/// email : "rick@pacificshoresrecovery.com"
+/// provinceId : 1
+/// name : "Cabo Delgado"
 
 class Data {
   Data({
-      int? caseManagerId, 
-      String? name, 
-      String? email,}){
-    _caseManagerId = caseManagerId;
+      int? provinceId, 
+      String? name,}){
+    _provinceId = provinceId;
     _name = name;
-    _email = email;
 }
 
   Data.fromJson(dynamic json) {
-    _caseManagerId = json['caseManagerId'];
+    _provinceId = json['provinceId'];
     _name = json['name'];
-    _email = json['email'];
   }
-  int? _caseManagerId;
+  int? _provinceId;
   String? _name;
-  String? _email;
 
-  int? get caseManagerId => _caseManagerId;
+  int? get provinceId => _provinceId;
   String? get name => _name;
-  String? get email => _email;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['caseManagerId'] = _caseManagerId;
+    map['provinceId'] = _provinceId;
     map['name'] = _name;
-    map['email'] = _email;
     return map;
   }
 
