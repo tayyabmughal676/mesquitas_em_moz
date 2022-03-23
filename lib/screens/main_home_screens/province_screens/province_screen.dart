@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mesquitas_em_moz/res/assets.dart';
-import 'package:mesquitas_em_moz/res/colors.dart';
-import 'package:mesquitas_em_moz/screens/main_home_screens/province_screens/province_provider.dart';
-import 'package:mesquitas_em_moz/widgets/text_views.dart';
 import 'package:provider/provider.dart';
 
+import '../../../res/assets.dart';
+import '../../../res/colors.dart';
 import '../../../res/res.dart';
+import '../../../widgets/text_views.dart';
 import '../../project_widgets/project_widgets.dart';
+import 'province_provider.dart';
 
 class ProvinceScreen extends StatefulWidget {
   const ProvinceScreen({Key? key}) : super(key: key);
@@ -45,11 +45,11 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
               image: DecorationImage(
                   image: AssetImage("assets/png/main_bg_image.png"),
                   fit: BoxFit.cover)),
-          child: Column(
-            children: [
-              provinceProvider.isDataLoaded == true
-                  ? Expanded(
-                      child: Padding(
+          child: provinceProvider.isDataLoaded == true
+              ? Column(
+                  children: [
+                    Expanded(
+                        child: Padding(
                       padding: EdgeInsets.only(
                           left: sizes!.widthRatio * 25,
                           right: sizes!.widthRatio * 25,
@@ -67,14 +67,14 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
                               child: getProvinceContainer(name: name),
                             );
                           }),
-                    ))
-                  : Center(
-                      child: TextView.getRegularS17W600Text(
-                          "No Data Found", Assets.poppinsMedium,
-                          color: AppColors.psGetStartedButtonColor, lines: 1),
-                    ),
-            ],
-          ),
+                    )),
+                  ],
+                )
+              : Center(
+                  child: TextView.getRegularS17W600Text(
+                      "No Provinca Found", Assets.poppinsMedium,
+                      color: AppColors.psGetStartedButtonColor, lines: 1),
+                ),
         ),
       ),
     );

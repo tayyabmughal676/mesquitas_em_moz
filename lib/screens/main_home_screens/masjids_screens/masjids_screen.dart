@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mesquitas_em_moz/animations/slide_right.dart';
-import 'package:mesquitas_em_moz/res/assets.dart';
-import 'package:mesquitas_em_moz/res/common_padding.dart';
 import 'package:mesquitas_em_moz/res/extensions.dart';
-import 'package:mesquitas_em_moz/screens/main_home_screens/masjids_screens/masjid_detail_screens/masjid_detail_screen.dart';
-import 'package:mesquitas_em_moz/screens/main_home_screens/masjids_screens/masjids_provider.dart';
-import 'package:mesquitas_em_moz/screens/main_home_screens/province_screens/province_provider.dart';
-import 'package:mesquitas_em_moz/screens/project_widgets/project_widgets.dart';
 import 'package:mesquitas_em_moz/widgets/text_views.dart';
 import 'package:provider/provider.dart';
 
+import '../../../animations/slide_right.dart';
+import '../../../res/assets.dart';
 import '../../../res/colors.dart';
+import '../../../res/common_padding.dart';
 import '../../../res/res.dart';
+import '../../project_widgets/project_widgets.dart';
+import 'masjid_detail_screens/masjid_detail_screen.dart';
+import 'masjids_provider.dart';
 
 class MasjidsScreen extends StatefulWidget {
   const MasjidsScreen({Key? key}) : super(key: key);
@@ -42,8 +41,8 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
     Provider.of<MasjidsProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
-        appBar:
-            ProjectWidget.getAppBar(title: "Mesquitas na Cidade de Chimoio"),
+        appBar: ProjectWidget.getAppBar(
+            title: "Mesquitas na Cidade de Chimoio", icon: ''),
         body: Container(
           height: sizes!.height,
           width: sizes!.width,
@@ -89,7 +88,7 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
                           }))
                   : Center(
                       child: TextView.getRegularS17W600Text(
-                          "No Data Found", Assets.poppinsMedium,
+                          "No Mesquitas Found", Assets.poppinsMedium,
                           color: AppColors.psGetStartedButtonColor, lines: 1),
                     ),
 
@@ -144,7 +143,9 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
                     CommonPadding.sizeBoxWithHeight(height: 3),
                     TextView.getSubHeadingTextWith15(
                         "Maghrib", Assets.poppinsMedium,
-                        color: AppColors.whiteTextColor, lines: 1),
+                        color: AppColors.whiteTextColor,
+                        lines: 1,
+                        fontWeight: FontWeight.normal),
                   ],
                 ),
                 Column(
@@ -155,7 +156,9 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
                     CommonPadding.sizeBoxWithHeight(height: 2),
                     TextView.getMediumText14(
                         "Terça, Fev 24", Assets.poppinsRegular,
-                        color: AppColors.whiteTextColor, lines: 1),
+                        color: AppColors.whiteTextColor,
+                        lines: 1,
+                        fontWeight: FontWeight.normal),
                     CommonPadding.sizeBoxWithHeight(height: 2),
                     TextView.getTextWith20("23", Assets.poppinsRegular,
                         color: AppColors.whiteTextColor, lines: 1),
