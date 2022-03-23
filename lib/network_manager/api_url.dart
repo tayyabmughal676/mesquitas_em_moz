@@ -7,3 +7,6 @@ const String baseUrl = "https://mesquitasapi.jinnbytedev.com";
 const String getProvinceApiUrl = "$baseUrl/api/lookups/GetProvinces";
 const String getMasjidApiUrl = "$baseUrl/api/user/mosque/GetMosques";
 const String getMasjidDetailApiUrl = "$baseUrl/api/user/mosque/GetMosque/";
+
+//Duas
+const String getDuasTypeApiUrl = "$baseUrl/api/lookups/GetDuaTypes/";

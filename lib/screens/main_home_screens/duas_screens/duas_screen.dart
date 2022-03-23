@@ -4,9 +4,11 @@ import 'package:mesquitas_em_moz/animations/slide_right.dart';
 import 'package:mesquitas_em_moz/res/assets.dart';
 import 'package:mesquitas_em_moz/res/common_padding.dart';
 import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/dua_after_salah_screens/dua_after_salah_screen.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/duas_provider.dart';
 import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/rabbana_duas_screens/rabbana_dua_screen.dart';
 import 'package:mesquitas_em_moz/screens/project_widgets/project_widgets.dart';
 import 'package:mesquitas_em_moz/widgets/text_views.dart';
+import 'package:provider/provider.dart';
 
 import '../../../res/colors.dart';
 import '../../../res/res.dart';
@@ -35,8 +37,23 @@ class _DuasScreenState extends State<DuasScreen> {
     "assets/svg/40_duas.svg"
   ];
 
+  late DuasProvider duasProvider;
+
+  @override
+  void initState() {
+    duasProvider = DuasProvider();
+    duasProvider = Provider.of<DuasProvider>(context, listen: false);
+    duasProvider.init(context: context);
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      duasProvider.getDuaTypes(context: context);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    Provider.of<DuasProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
         appBar: ProjectWidget.getAppBar(title: "Duas"),
@@ -48,53 +65,48 @@ class _DuasScreenState extends State<DuasScreen> {
               image: DecorationImage(
                   image: AssetImage("assets/png/main_bg_image.png"),
                   fit: BoxFit.cover)),
-          child: Column(
-            children: [
-              CommonPadding.sizeBoxWithHeight(height: 30),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: sizes!.widthRatio * 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: duasProvider.isDataLoaded == true
+              ? Column(
                   children: [
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              SlideRightRoute(
-                                  page: const DuaAfterSalahScreen()));
-                        },
-                        child: _getDuasContainer(
-                            title: duaList[0], icon: duaIconList[0])),
-                    _getDuasContainer(title: duaList[1], icon: duaIconList[1]),
-                    _getDuasContainer(title: duaList[2], icon: duaIconList[2]),
+                    CommonPadding.sizeBoxWithHeight(height: 30),
+                    Expanded(
+                        child: GridView.builder(
+                      itemCount: duasProvider.getDuaTypesResponse.data!.length,
+                      itemBuilder: (context, index) {
+                        var duaId = duasProvider
+                            .getDuaTypesResponse.data![index].duaTypeId;
+                        var image = duaIconList[index];
+                        var name = duasProvider
+                            .getDuaTypesResponse.data![index].name
+                            .toString();
+                        return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  SlideRightRoute(
+                                      page:  DuaAfterSalahScreen()));
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: sizes!.widthRatio * 8,
+                              ),
+                              child:
+                                  _getDuasContainer(title: name, icon: image),
+                            ));
+                      },
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3),
+                    )),
                   ],
+                )
+              : Center(
+                  child: TextView.getMediumText16(
+                      "No Dua's type found", Assets.poppinsMedium,
+                      color: AppColors.psGetStartedButtonColor,
+                      fontWeight: FontWeight.normal,
+                      lines: 1),
                 ),
-              ),
-              CommonPadding.sizeBoxWithHeight(height: 30),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: sizes!.widthRatio * 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _getDuasContainer(title: duaList[3], icon: duaIconList[3]),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              SlideRightRoute(page: const RabbanaDuaScreen()));
-                        },
-                        child: _getDuasContainer(
-                            title: duaList[4], icon: duaIconList[4])),
-                    SizedBox(
-                      width: sizes!.widthRatio * 88,
-                      height: sizes!.heightRatio * 122,
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
         ),
       ),
     );
@@ -102,7 +114,7 @@ class _DuasScreenState extends State<DuasScreen> {
 
   Widget _getDuasContainer({required String title, required String icon}) =>
       Container(
-          width: sizes!.widthRatio * 88,
+          width: sizes!.widthRatio * 70,
           height: sizes!.heightRatio * 122,
           decoration: BoxDecoration(
             color: AppColors.whiteTextColor,
@@ -118,15 +130,15 @@ class _DuasScreenState extends State<DuasScreen> {
           child: Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: sizes!.widthRatio * 10,
-                vertical: sizes!.heightRatio * 15),
+                vertical: sizes!.heightRatio * 10),
             child: Column(
               children: [
                 Center(child: SvgPicture.asset(icon)),
-                CommonPadding.sizeBoxWithHeight(height: 10),
+                CommonPadding.sizeBoxWithHeight(height: 5),
                 Center(
                   child: TextView.getSmallText12(title, Assets.poppinsMedium,
                       color: AppColors.blackTextColor,
-                      lines: 2,
+                      lines: 5,
                       textAlign: TextAlign.center),
                 )
               ],

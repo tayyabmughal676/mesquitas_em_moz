@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mesquitas_em_moz/res/extensions.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/duas_screens/dua_after_salah_screens/dua_after_salah_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
@@ -9,13 +11,29 @@ import '../../../../widgets/text_views.dart';
 import '../../../project_widgets/project_widgets.dart';
 
 class DuaAfterSalahScreen extends StatefulWidget {
-  const DuaAfterSalahScreen({Key? key}) : super(key: key);
+  final dynamic duaId;
+
+  const DuaAfterSalahScreen({Key? key, this.duaId}) : super(key: key);
 
   @override
   State<DuaAfterSalahScreen> createState() => _DuaAfterSalahScreenState();
 }
 
 class _DuaAfterSalahScreenState extends State<DuaAfterSalahScreen> {
+  late DuaAfterSalahProvider duaAfterSalahProvider;
+
+  @override
+  void initState() {
+    duaAfterSalahProvider = DuaAfterSalahProvider();
+    duaAfterSalahProvider =
+        Provider.of<DuaAfterSalahProvider>(context, listen: false);
+    duaAfterSalahProvider.init(context: context);
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {});
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
