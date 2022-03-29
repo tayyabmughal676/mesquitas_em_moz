@@ -1,4 +1,5 @@
 import '../models/duas/GetDuaTypesResponse.dart';
+import '../models/duas/GetDuaTypesResponse.dart';
 import '../models/error_model/error_model.dart';
 import '../models/masjids/GetMasjidDetailResponse.dart';
 import '../models/masjids/GetMasjidsResponse.dart';

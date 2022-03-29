@@ -26,7 +26,7 @@ class DuasProvider extends ChangeNotifier {
       debugPrint("URL: $getDuasTypeApiUrl");
 
       getDuaTypesResponse = await MyApi.callGetApi(
-          url: getMasjidApiUrl,
+          url: getDuasTypeApiUrl,
           myHeaders: header,
           modelName: Models.getDuaTypesModel);
 
@@ -36,11 +36,11 @@ class DuasProvider extends ChangeNotifier {
         isDataLoaded = true;
         notifyListeners();
       } else {
-        debugPrint("isDataLoaded: Something wrong");
+        debugPrint("getDuaTypesResponse: Something wrong");
         _loader.hideLoader(context: context);
       }
     } catch (e) {
-      _logger.d("isDataLoaded: ${e.toString()} ");
+      _logger.d("getDuaTypesResponse: ${e.toString()} ");
       _loader.hideLoader(context: context);
     }
   }

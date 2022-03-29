@@ -84,12 +84,14 @@ class _DuasScreenState extends State<DuasScreen> {
                               Navigator.push(
                                   context,
                                   SlideRightRoute(
-                                      page:  DuaAfterSalahScreen()));
+                                      page: DuaAfterSalahScreen(
+                                    duaId: duaId,
+                                  )));
                             },
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                horizontal: sizes!.widthRatio * 8,
-                              ),
+                                  horizontal: sizes!.widthRatio * 8,
+                                  vertical: sizes!.heightRatio * 5),
                               child:
                                   _getDuasContainer(title: name, icon: image),
                             ));
@@ -115,7 +117,7 @@ class _DuasScreenState extends State<DuasScreen> {
   Widget _getDuasContainer({required String title, required String icon}) =>
       Container(
           width: sizes!.widthRatio * 70,
-          height: sizes!.heightRatio * 122,
+          height: sizes!.heightRatio * 130,
           decoration: BoxDecoration(
             color: AppColors.whiteTextColor,
             borderRadius: BorderRadius.circular(12),
@@ -130,7 +132,7 @@ class _DuasScreenState extends State<DuasScreen> {
           child: Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: sizes!.widthRatio * 10,
-                vertical: sizes!.heightRatio * 10),
+                vertical: sizes!.heightRatio * 7),
             child: Column(
               children: [
                 Center(child: SvgPicture.asset(icon)),
