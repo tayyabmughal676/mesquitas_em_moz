@@ -1,6 +1,6 @@
 /// message : "Operation performed successfully"
 /// code : 1
-/// data : {"mosqueId":3,"name":"Aqsa Mosque","filePath":"","fajr":"05:00:00","nascerDoSol":"02:00:00","zuhr":"13:00:00","asr":"16:00:00","maghrib":"19:00:00","isha":"20:00:00","events":[{"eventId":4,"name":"Shab e Baraat","filePath":""},{"eventId":8,"name":"Mehfil e Naat","filePath":""}]}
+/// data : {"mosqueId":5,"name":"DHA Mosque","filePath":"","fajr":"05:00","nascerDoSol":"02:00","zuhr":"13:00","asr":"16:00","maghrib":"19:00","isha":"20:00","events":[{"eventId":9,"name":"Mehfil e Naat","filePath":""},{"eventId":10,"name":"Shab e raat","filePath":""}]}
 
 class GetMasjidDetailResponse {
   GetMasjidDetailResponse({
@@ -23,6 +23,17 @@ class GetMasjidDetailResponse {
   int? _code;
   Data? _data;
 
+  GetMasjidDetailResponse copyWith({
+    String? message,
+    int? code,
+    Data? data,
+  }) =>
+      GetMasjidDetailResponse(
+        message: message ?? _message,
+        code: code ?? _code,
+        data: data ?? _data,
+      );
+
   String? get message => _message;
 
   int? get code => _code;
@@ -40,16 +51,16 @@ class GetMasjidDetailResponse {
   }
 }
 
-/// mosqueId : 3
-/// name : "Aqsa Mosque"
+/// mosqueId : 5
+/// name : "DHA Mosque"
 /// filePath : ""
-/// fajr : "05:00:00"
-/// nascerDoSol : "02:00:00"
-/// zuhr : "13:00:00"
-/// asr : "16:00:00"
-/// maghrib : "19:00:00"
-/// isha : "20:00:00"
-/// events : [{"eventId":4,"name":"Shab e Baraat","filePath":""},{"eventId":8,"name":"Mehfil e Naat","filePath":""}]
+/// fajr : "05:00"
+/// nascerDoSol : "02:00"
+/// zuhr : "13:00"
+/// asr : "16:00"
+/// maghrib : "19:00"
+/// isha : "20:00"
+/// events : [{"eventId":9,"name":"Mehfil e Naat","filePath":""},{"eventId":10,"name":"Shab e raat","filePath":""}]
 
 class Data {
   Data({
@@ -105,6 +116,31 @@ class Data {
   String? _isha;
   List<Events>? _events;
 
+  Data copyWith({
+    int? mosqueId,
+    String? name,
+    String? filePath,
+    String? fajr,
+    String? nascerDoSol,
+    String? zuhr,
+    String? asr,
+    String? maghrib,
+    String? isha,
+    List<Events>? events,
+  }) =>
+      Data(
+        mosqueId: mosqueId ?? _mosqueId,
+        name: name ?? _name,
+        filePath: filePath ?? _filePath,
+        fajr: fajr ?? _fajr,
+        nascerDoSol: nascerDoSol ?? _nascerDoSol,
+        zuhr: zuhr ?? _zuhr,
+        asr: asr ?? _asr,
+        maghrib: maghrib ?? _maghrib,
+        isha: isha ?? _isha,
+        events: events ?? _events,
+      );
+
   int? get mosqueId => _mosqueId;
 
   String? get name => _name;
@@ -143,8 +179,8 @@ class Data {
   }
 }
 
-/// eventId : 4
-/// name : "Shab e Baraat"
+/// eventId : 9
+/// name : "Mehfil e Naat"
 /// filePath : ""
 
 class Events {
@@ -167,6 +203,17 @@ class Events {
   int? _eventId;
   String? _name;
   String? _filePath;
+
+  Events copyWith({
+    int? eventId,
+    String? name,
+    String? filePath,
+  }) =>
+      Events(
+        eventId: eventId ?? _eventId,
+        name: name ?? _name,
+        filePath: filePath ?? _filePath,
+      );
 
   int? get eventId => _eventId;
 

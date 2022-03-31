@@ -45,6 +45,7 @@ class MasjidDetailProvider extends ChangeNotifier {
       }
     } catch (e) {
       _logger.d("getMasjidDetailResponseError: ${e.toString()}");
+      _loader.hideLoader(context: context);
     }
   }
 }
