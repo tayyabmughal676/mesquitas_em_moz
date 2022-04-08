@@ -25,13 +25,12 @@ class MasjidDetailProvider extends ChangeNotifier {
     try {
       _loader.showLoader(context: context);
       Map<String, dynamic> header = {"Content-Type": "application/json"};
-      debugPrint("URL: $getMasjidDetailApiUrl$id");
+      var url = "$getMasjidDetailApiUrl$id";
+      debugPrint("URL: $url");
       debugPrint("ID: $id");
 
       getMasjidDetailResponse = await MyApi.callGetApi(
-          url: getMasjidDetailApiUrl + id,
-          myHeaders: header,
-          modelName: Models.getMasjidDetailModel);
+          url: url, myHeaders: header, modelName: Models.getMasjidDetailModel);
 
       if (getMasjidDetailResponse.code == 1) {
         debugPrint(

@@ -35,8 +35,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
 
   static const List<Widget> _widgetOptions = [
     ProvinceScreen(),
-    PrayerScreen(),
-    MasjidsScreen(),
+    // PrayerScreen(),
+    // MasjidsScreen(),
     QuiblaScreen(),
     DuasScreen(),
   ];
@@ -49,18 +49,19 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
       bottomNavigationBar: CircleNavBar(
         activeIcons: [
           returnSelectedIcon(icon: "assets/svg/province_icon.svg"),
-          returnSelectedIcon(icon: "assets/svg/prayer_icon.svg"),
-          returnSelectedIcon(icon: "assets/svg/masjids_icon.svg"),
+          // returnSelectedIcon(icon: "assets/svg/prayer_icon.svg"),
+          // returnSelectedIcon(icon: "assets/svg/masjids_icon.svg"),
           returnSelectedIcon(icon: "assets/svg/quibla_bottom_icon.svg"),
           returnSelectedIcon(icon: "assets/svg/duas_icon.svg"),
         ],
         inactiveIcons: [
           returnBottomIconProvince(
               icon: "assets/svg/province_icon.svg", text: "Provincia"),
-          returnBottomIcon(icon: "assets/svg/prayer_icon.svg", text: "Prayer"),
+          // returnBottomIcon(icon: "assets/svg/prayer_icon.svg", text: "Prayer"),
+          // returnBottomIcon(
+          // icon: "assets/svg/masjids_icon.svg", text: "Masjids"),
           returnBottomIcon(
-              icon: "assets/svg/masjids_icon.svg", text: "Masjids"),
-          returnBottomIcon(icon: "assets/svg/quibla_bottom_icon.svg", text: "Quibla"),
+              icon: "assets/svg/quibla_bottom_icon.svg", text: "Quibla"),
           returnBottomIcon(icon: "assets/svg/duas_icon.svg", text: "Duas"),
         ],
 
