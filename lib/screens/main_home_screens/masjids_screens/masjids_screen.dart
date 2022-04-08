@@ -41,8 +41,8 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
     Provider.of<MasjidsProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
-        appBar: ProjectWidget.getAppBar(
-            title: "Mesquitas na Cidade de Chimoio", icon: ''),
+        appBar: ProjectWidget.getAppBarWithBackButton(
+            title: "Mesquita central de chimoio", context: context),
         body: Container(
           height: sizes!.height,
           width: sizes!.width,

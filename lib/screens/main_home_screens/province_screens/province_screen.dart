@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mesquitas_em_moz/animations/slide_right.dart';
+import 'package:mesquitas_em_moz/screens/main_home_screens/masjids_screens/masjids_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../../res/assets.dart';
@@ -64,7 +66,11 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
                             return Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: sizes!.heightRatio * 5),
-                              child: getProvinceContainer(name: name),
+                              child: GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, SlideRightRoute(page: const MasjidsScreen()));
+                                },
+                                  child: getProvinceContainer(name: name)),
                             );
                           }),
                     )),

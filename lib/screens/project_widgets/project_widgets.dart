@@ -58,7 +58,7 @@ class ProjectWidget {
       AppBar(
         // automaticallyImplyLeading: true,
         leading: Padding(
-          padding: EdgeInsets.only(left: sizes!.widthRatio * 10),
+          padding: EdgeInsets.only(left: sizes!.widthRatio * 15),
           child: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
@@ -74,7 +74,7 @@ class ProjectWidget {
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: sizes!.widthRatio * 25.44),
+            padding: EdgeInsets.only(right: sizes!.widthRatio * 50.44),
             child: SvgPicture.asset(icon ?? ''),
           )
         ],
