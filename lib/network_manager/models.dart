@@ -1,10 +1,10 @@
-import 'package:mesquitas_em_moz/models/provinces/GetMosquesByProvinceIdResponse.dart';
-
+import '../models/duas/GetDuaDetailResponse.dart';
 import '../models/duas/GetDuaTypesResponse.dart';
-import '../models/duas/GetDuaTypesResponse.dart';
+import '../models/duas/GetDuasByDuaTypeIdResponse.dart';
 import '../models/error_model/error_model.dart';
 import '../models/masjids/GetMasjidDetailResponse.dart';
 import '../models/masjids/GetMasjidsResponse.dart';
+import '../models/provinces/GetMosquesByProvinceIdResponse.dart';
 import '../models/provinces/GetProvinceResponse.dart';
 
 class Models {
@@ -14,6 +14,8 @@ class Models {
   static const String getMasjidByProvinceIdModel = "getMasjidByProvinceIdModel";
   static const String getMasjidDetailModel = "getMasjidDetailModel";
   static const String getDuaTypesModel = "getDuaTypesModel";
+  static const String getDuaDetailModel = "getDuaDetailModel";
+  static const String getDuaByTypeIdModel = "getDuaByTypeIdModel";
 
   static Future<dynamic> getModelObject(
       String modelName, Map<String, dynamic> json) async {
@@ -28,6 +30,10 @@ class Models {
         return GetDuaTypesResponse.fromJson(json);
       case getMasjidByProvinceIdModel:
         return GetMosquesByProvinceIdResponse.fromJson(json);
+      case getDuaByTypeIdModel:
+        return GetDuasByDuaTypeIdResponse.fromJson(json);
+      case getDuaDetailModel:
+        return GetDuaDetailResponse.fromJson(json);
       case errorModel:
         return ErrorResponse.fromJson(json);
     }

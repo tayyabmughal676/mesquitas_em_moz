@@ -11,6 +11,8 @@ const String getMasjidByProvinceIdApiUrl =
     "$baseUrl/api/user/mosque/GetMosquesByProvinceId?";
 
 const String getMasjidDetailApiUrl = "$baseUrl/api/user/mosque/GetMosque/";
-
 //Duas
 const String getDuasTypeApiUrl = "$baseUrl/api/lookups/GetDuaTypes/";
+const String getDuaDetailApiUrl = "$baseUrl/api/user/dua/GetDua/";
+const String getDuasByTypeIdApiUrl =
+    "$baseUrl/api/user/dua/GetDuasByDuaTypeId?";
