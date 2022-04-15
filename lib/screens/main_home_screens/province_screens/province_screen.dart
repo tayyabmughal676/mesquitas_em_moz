@@ -63,13 +63,21 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
                             var name = provinceProvider
                                 .getProvinceResponse.data![index].name
                                 .toString();
+
+                            var provinceId = provinceProvider
+                                .getProvinceResponse.data![index].provinceId;
                             return Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: sizes!.heightRatio * 5),
                               child: GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, SlideRightRoute(page: const MasjidsScreen()));
-                                },
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        SlideRightRoute(
+                                            page: MasjidsScreen(
+                                          provinceId: provinceId,
+                                        )));
+                                  },
                                   child: getProvinceContainer(name: name)),
                             );
                           }),

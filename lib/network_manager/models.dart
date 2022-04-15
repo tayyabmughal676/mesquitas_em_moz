@@ -1,3 +1,5 @@
+import 'package:mesquitas_em_moz/models/provinces/GetMosquesByProvinceIdResponse.dart';
+
 import '../models/duas/GetDuaTypesResponse.dart';
 import '../models/duas/GetDuaTypesResponse.dart';
 import '../models/error_model/error_model.dart';
@@ -9,6 +11,7 @@ class Models {
   static const String errorModel = "ERROR_MODEL";
   static const String getProvinceModel = "getProvinceModel";
   static const String getMasjidModel = "getMasjidModel";
+  static const String getMasjidByProvinceIdModel = "getMasjidByProvinceIdModel";
   static const String getMasjidDetailModel = "getMasjidDetailModel";
   static const String getDuaTypesModel = "getDuaTypesModel";
 
@@ -23,6 +26,8 @@ class Models {
         return GetMasjidDetailResponse.fromJson(json);
       case getDuaTypesModel:
         return GetDuaTypesResponse.fromJson(json);
+      case getMasjidByProvinceIdModel:
+        return GetMosquesByProvinceIdResponse.fromJson(json);
       case errorModel:
         return ErrorResponse.fromJson(json);
     }

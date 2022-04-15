@@ -15,7 +15,9 @@ import 'masjid_detail_screens/masjid_detail_screen.dart';
 import 'masjids_provider.dart';
 
 class MasjidsScreen extends StatefulWidget {
-  const MasjidsScreen({Key? key}) : super(key: key);
+  final int? provinceId;
+
+  const MasjidsScreen({Key? key, this.provinceId}) : super(key: key);
 
   @override
   State<MasjidsScreen> createState() => _MasjidsScreenState();
@@ -31,7 +33,8 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
     masjidsProvider.init(context: context);
 
     WidgetsBinding.instance!.addPostFrameCallback((_) {
-      masjidsProvider.getMasjidList(context: context);
+      masjidsProvider.getMasjidByProviderId(
+          context: context, id: widget.provinceId!);
     });
     super.initState();
   }
@@ -56,19 +59,22 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
             children: [
               getHeaderContainer(),
               CommonPadding.sizeBoxWithHeight(height: 12),
-
-              masjidsProvider.isDataLoaded == true
+              masjidsProvider.isMasjidLoaded == true
                   ? Expanded(
                       child: ListView.builder(
-                          itemCount:
-                              masjidsProvider.getMasjidsResponse.data!.length,
+                          itemCount: masjidsProvider
+                              .getMosquesByProvinceIdResponse.data!.length,
                           itemBuilder: (context, index) {
                             var name = masjidsProvider
-                                .getMasjidsResponse.data![index].name
+                                .getMosquesByProvinceIdResponse
+                                .data![index]
+                                .name
                                 .toString();
 
-                            var id = masjidsProvider
-                                .getMasjidsResponse.data![index].mosqueId;
+                            var mosqueId = masjidsProvider
+                                .getMosquesByProvinceIdResponse
+                                .data![index]
+                                .mosqueId;
 
                             return Padding(
                               padding: EdgeInsets.symmetric(
@@ -79,7 +85,7 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
                                         context,
                                         SlideRightRoute(
                                             page: MasjidDetailScreen(
-                                          id: id,
+                                          mosqueId: mosqueId,
                                         )));
                                   },
                                   child: getRowContainer(name: name)
@@ -204,7 +210,7 @@ class _MasjidsScreenState extends State<MasjidsScreen> {
                   CommonPadding.sizeBoxWithWidth(width: 7),
                   TextView.getSubHeadingTextWith15(name, Assets.poppinsRegular,
                       color: AppColors.xSubheadingTextColor,
-                      lines: 1,
+                      lines: 4,
                       fontWeight: FontWeight.normal),
                 ],
               ),

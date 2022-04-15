@@ -8,10 +8,8 @@ import '../../../../widgets/loader.dart';
 
 class MasjidDetailProvider extends ChangeNotifier {
   BuildContext? context;
-
   final Logger _logger = Logger();
   final Loader _loader = Loader();
-
   bool isDataLoaded = false;
   GetMasjidDetailResponse getMasjidDetailResponse = GetMasjidDetailResponse();
 
