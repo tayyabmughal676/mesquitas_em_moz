@@ -79,14 +79,15 @@ class _DuasScreenState extends State<DuasScreen> {
                         var name = duasProvider
                             .getDuaTypesResponse.data![index].name
                             .toString();
+                        // DuaAfterSalahScreen(
+                        //   duaId: duaId,
+                        // ),
                         return GestureDetector(
                             onTap: () {
                               Navigator.push(
                                   context,
                                   SlideRightRoute(
-                                      page: DuaAfterSalahScreen(
-                                    duaId: duaId,
-                                  )));
+                                      page: const RabbanaDuaScreen()));
                             },
                             child: Padding(
                               padding: EdgeInsets.symmetric(

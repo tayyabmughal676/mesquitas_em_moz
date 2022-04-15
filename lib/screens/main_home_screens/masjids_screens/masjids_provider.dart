@@ -12,12 +12,33 @@ class MasjidsProvider extends ChangeNotifier {
   final Logger _logger = Logger();
   final Loader _loader = Loader();
   bool isDataLoaded = false;
+  bool isMasjidLoaded = false;
 
   GetMasjidsResponse getMasjidsResponse = GetMasjidsResponse();
 
   Future<void> init({@required BuildContext? context}) async {
     this.context = context;
     isDataLoaded = false;
+    isMasjidLoaded = false;
+  }
+
+  Future<void> getMasjidByProviderId(
+      {required BuildContext context, required int id}) async {
+    try {
+      _loader.showLoader(context: context);
+      Map<String, dynamic> header = {"Content-Type": "application/json"};
+      Map<String, dynamic> params = {
+        "provinceId": id,
+      };
+      debugPrint("URL: $getMasjidByProvinceIdApiUrl");
+      debugPrint("Params: $params");
+
+      isMasjidLoaded = false;
+      notifyListeners();
+    } catch (e) {
+      _logger.d("getMasjidsResponse: ${e.toString()} ");
+      _loader.hideLoader(context: context);
+    }
   }
 
   Future<void> getMasjidList({required BuildContext context}) async {
